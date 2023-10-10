@@ -49,11 +49,13 @@ c.DockerSpawner.remove = True
 c.DockerSpawner.debug = True
 
 # For the host's home directory
-c.SystemUserSpawner.host_homedir_format_string = "/home/{username}"
+c.SystemUserSpawner.host_homedir_format_string = notebook_dir
 
 # User containers will access hub by container name on the Docker network
 c.JupyterHub.hub_ip = "jupyterhub"
 c.JupyterHub.hub_port = 8080
+# because we are behind a proxy, with path /jupyter/
+c.JupyterHub.bind_url = "http://:8000/jupyter/"
 
 # Persist hub data on volume mounted inside container
 c.JupyterHub.cookie_secret_file = "/data/jupyterhub_cookie_secret"

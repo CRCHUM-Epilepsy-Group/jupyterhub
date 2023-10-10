@@ -11,8 +11,11 @@ services:
     container_name: jupyterhub
     networks:
       - jupyterhub-network
-    ports:
-      - "8080:8000"
+      - webproxy
+    # ports:
+    #   - "8080:8000"
+    expose:
+      - "8000"
     volumes:
       # these are needed to allow users to loggin with the
       # same credentials on the host server
@@ -34,6 +37,10 @@ services:
       DOCKER_NETWORK_NAME: jupyterhub-network
       # JupyterHub will spawn this Notebook image for users
       DOCKER_NOTEBOOK_IMAGE: jupyter/datascience-notebook:python-3.11
+      # for the proxy to detect the container
+      VIRTUAL_HOST: recherche-bouassi-1
+      VIRTUAL_PORT: 8000
+      VIRTUAL_PATH: /jupyter/
     restart: always
 
 volumes:
@@ -43,3 +50,5 @@ volumes:
 networks:
   jupyterhub-network:
     name: jupyterhub-network
+  webproxy:
+    external: true
