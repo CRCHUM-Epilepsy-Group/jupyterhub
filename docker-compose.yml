@@ -4,7 +4,7 @@ services:
   jupyterhub:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.hub
       args:
         JUPYTERHUB_VERSION: latest
     image: jupyterhub
@@ -36,12 +36,26 @@ services:
       # All containers will join this network
       DOCKER_NETWORK_NAME: jupyterhub-network
       # JupyterHub will spawn this Notebook image for users
-      DOCKER_NOTEBOOK_IMAGE: jupyter/datascience-notebook:python-3.11
+      DOCKER_NOTEBOOK_IMAGE: jupyter-datascience-matlab
       # for the proxy to detect the container
       VIRTUAL_HOST: recherche-bouassi-1
       VIRTUAL_PORT: 8000
       VIRTUAL_PATH: /jupyter/
     restart: always
+
+  # run "docker compose build jupyter-notebook" before starting the hub
+  jupyter-notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile.notebook
+      args:
+        LICENSE_SERVER: ${LICENSE_SERVER}
+        MATLAB_RELEASE: ${MATLAB_RELEASE}
+        JUPYTER_BASE_IMAGE: jupyter/datascience-notebook:python-3.11
+    image: jupyter-datascience-matlab:latest
+    profiles:
+      # this prevents docker compose up from starting this service
+      - build
 
 volumes:
   jupyterhub-data:
@@ -49,6 +63,7 @@ volumes:
 
 networks:
   jupyterhub-network:
+    # set the name so it is not prefixed
     name: jupyterhub-network
   webproxy:
     external: true
