@@ -51,6 +51,7 @@ services:
       args:
         LICENSE_SERVER: ${LICENSE_SERVER}
         MATLAB_RELEASE: ${MATLAB_RELEASE}
+        MATLAB_PRODUCT_LIST: "MATLAB Deep_Learning_Toolbox Signal_Processing_Toolbox"
         JUPYTER_BASE_IMAGE: jupyter/datascience-notebook:python-3.11
     image: jupyter-datascience-matlab:latest
     profiles:
