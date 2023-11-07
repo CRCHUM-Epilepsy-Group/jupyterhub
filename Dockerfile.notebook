@@ -13,8 +13,8 @@ ARG SHOULD_USE_LICENSE_SERVER=${LICENSE_SERVER:+"_with_lm"}
 # Default DDUX information
 ARG MW_CONTEXT_TAGS=MATLAB_PROXY:JUPYTER:MPM:V1
 
-# Default to jupyter/datascience-notebook:python-3.11 if not specified at build time
-ARG BASE_JUPYTER_IMAGE=jupyter/datascience-notebook:python-3.11
+# Default to quay.io/jupyter/datascience-notebook:python-3.11 if not specified at build time
+ARG BASE_JUPYTER_IMAGE=quay.io/jupyter/datascience-notebook:python-3.11
 
 # Base Jupyter image without LICENSE_SERVER
 FROM ${BASE_JUPYTER_IMAGE} AS base_jupyter_image
