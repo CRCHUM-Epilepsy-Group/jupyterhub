@@ -32,7 +32,7 @@ services:
       - "jupyterhub-data:/data"
     environment:
       # This username will be a JupyterHub admin
-      JUPYTERHUB_ADMIN: admin
+      JUPYTERHUB_ADMIN: ${JUPYTERHUB_ADMIN}
       # All containers will join this network
       DOCKER_NETWORK_NAME: jupyterhub-network
       # JupyterHub will spawn this Notebook image for users
