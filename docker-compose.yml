@@ -51,7 +51,11 @@ services:
       args:
         LICENSE_SERVER: ${LICENSE_SERVER}
         MATLAB_RELEASE: ${MATLAB_RELEASE}
-        MATLAB_PRODUCT_LIST: "MATLAB Deep_Learning_Toolbox Signal_Processing_Toolbox"
+        # add one toolbox name per line
+        MATLAB_PRODUCT_LIST: >
+          MATLAB Deep_Learning_Toolbox
+          Signal_Processing_Toolbox
+          Statistics_and_Machine_Learning_Toolbox
         BASE_JUPYTER_IMAGE: quay.io/jupyter/datascience-notebook:latest
     image: jupyter-datascience-matlab:latest
     profiles:
