@@ -38,7 +38,7 @@ services:
       # JupyterHub will spawn this Notebook image for users
       DOCKER_NOTEBOOK_IMAGE: jupyter-datascience-matlab
       # for the proxy to detect the container
-      VIRTUAL_HOST: recherche-bouassi-1
+      VIRTUAL_HOST: ${HOSTNAME}
       VIRTUAL_PORT: 8000
       VIRTUAL_PATH: /jupyter/
     restart: always
