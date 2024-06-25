@@ -53,12 +53,7 @@ services:
         MATLAB_RELEASE: ${MATLAB_RELEASE}
         # add one toolbox name per line
         MATLAB_PRODUCT_LIST: >
-          MATLAB
-          Deep_Learning_Toolbox
-          Signal_Processing_Toolbox
-          Statistics_and_Machine_Learning_Toolbox
-          Parallel_Computing_Toolbox
-          Communications_Toolbox
+          MATLAB Deep_Learning_Toolbox Signal_Processing_Toolbox Statistics_and_Machine_Learning_Toolbox Parallel_Computing_Toolbox Communications_Toolbox
         BASE_JUPYTER_IMAGE: quay.io/jupyter/datascience-notebook:latest
     image: jupyter-datascience-matlab:latest
     profiles:
