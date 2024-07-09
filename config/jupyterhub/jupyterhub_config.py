@@ -73,6 +73,7 @@ admin = os.environ.get("JUPYTERHUB_ADMIN")
 if admin:
     c.Authenticator.admin_users = [admin]
 
+c.Authenticator.allow_all = True
 c.Authenticator.delete_invalid_users = True
 
 # Automatically create system users from jupyterhub users
