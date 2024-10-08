@@ -33,7 +33,6 @@ ARG MATLAB_PRODUCT_LIST
 
 # Switch to root user
 USER root
-ENV DEBIAN_FRONTEND="noninteractive" TZ="Etc/UTC"
 
 ## Installing Dependencies for Ubuntu 22.04
 # For MATLAB : Get base-dependencies.txt from matlab-deps repository on GitHub
