@@ -48,6 +48,9 @@ c.DockerSpawner.remove = True
 # For debugging arguments passed to spawned containers
 c.DockerSpawner.debug = True
 
+# Set the timezone to be the local one
+c.DockerSpawner.env_keep = ["TZ"]
+
 # For the host's home directory
 c.SystemUserSpawner.host_homedir_format_string = notebook_dir
 

@@ -39,6 +39,7 @@ services:
       VIRTUAL_HOST: ${HOSTNAME}
       VIRTUAL_PORT: 8000
       VIRTUAL_PATH: /jupyter/
+      TZ: America/Montreal
     restart: always
 
   # run "docker compose build jupyter-notebook" before starting the hub
