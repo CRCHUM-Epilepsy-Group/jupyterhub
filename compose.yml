@@ -53,7 +53,7 @@ services:
         # add one toolbox name per line
         MATLAB_PRODUCT_LIST: >
           MATLAB Deep_Learning_Toolbox Signal_Processing_Toolbox Statistics_and_Machine_Learning_Toolbox Parallel_Computing_Toolbox Communications_Toolbox
-        BASE_JUPYTER_IMAGE: quay.io/jupyter/datascience-notebook:ubuntu-22.04
+        BASE_JUPYTER_IMAGE: quay.io/jupyter/datascience-notebook:python-3.12
     image: jupyter-datascience-matlab:latest
     profiles:
       # this prevents docker compose up from starting this service
