@@ -50,6 +50,7 @@ RUN wget ${MATLAB_DEPS_REQUIREMENTS_FILE} -O ${MATLAB_DEPS_REQUIREMENTS_FILE_NAM
     unzip \
     ca-certificates \
     xvfb \
+    fluxbox \
     && apt-get clean \
     && apt-get -y autoremove \
     && rm -rf /var/lib/apt/lists/* ${MATLAB_DEPS_REQUIREMENTS_FILE_NAME}
@@ -64,17 +65,6 @@ RUN wget -q https://www.mathworks.com/mpm/glnxa64/mpm && \
     rm -f mpm /tmp/mathworks_root.log && \
     ln -s /opt/matlab/bin/matlab /usr/local/bin/matlab
 
-# Install patched glibc - See https://github.com/mathworks/build-glibc-bz-19329-patch
-# This is for ubuntu-20.04 specifically
-# WORKDIR /packages
-# RUN export DEBIAN_FRONTEND=noninteractive && \
-#     apt-get update && apt-get clean && apt-get autoremove && \
-#     wget -q https://github.com/mathworks/build-glibc-bz-19329-patch/releases/download/ubuntu-focal/all-packages.tar.gz && \
-#     tar -x -f all-packages.tar.gz \
-#     --exclude glibc-*.deb \
-#     --exclude libc6-dbg*.deb && \
-#     apt-get install --yes --no-install-recommends --allow-downgrades ./*.deb && \
-#     rm -fr /packages
 WORKDIR /
 
 # Optional: Install MATLAB Engine for Python, if possible.
